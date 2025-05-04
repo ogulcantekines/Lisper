@@ -1,0 +1,213 @@
+/* 🌈 ROOT VARIABLES */
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+/* 🔥 BODY STYLING */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000, #2b2b2b, #777777, #d9d9d9, #ffffff);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+/* ⭐ TITLE */
+h1 {
+  color: white;
+  font-family: "Titan One", cursive;
+  margin-bottom: 20px;
+}
+
+/* 🃏 CARD STYLING */
+.card {
+  background: url("../images/dark.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgba(0, 0, 0, 0);  /* ❗ Initially hidden */
+  transition: color 0.6s ease;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.0);
+}
+
+/* 🎬 TEXT REVEAL ANIMATION */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🖱️ HOVER EFFECTS */
+.card:hover {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Gloria Hallelujah", cursive;
+  box-shadow: 0 0 30px rgba(93, 220, 255, 0.6);
+}
+
+.card:hover #secret-text {
+  animation: reveal 0.5s ease;
+}
+
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+/* ✨ GLOW & BORDER EFFECTS */
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: glow-spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+/* 🌀 ROTATION PROPERTY */
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+/* 🌟 GLOW SPIN ANIMATION */
+@keyframes glow-spin {
+  0% { --rotate: 0deg; }
+  100% { --rotate: 360deg; }
+}
+
+/* 🔗 LINK STYLING */
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+/* 👤 USER TEXT */
+.user {
+  color: white;
+  font-size: 24px;
+  font-family: "Titan One", cursive;
+}
+
+/* 🔄 NEW SECRET BUTTON */
+#new-secret-btn {
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: 'Titan One', sans-serif;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.5);
+  transition: all 0.3s ease;
+}
+
+#new-secret-btn:hover {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(56, 249, 215, 0.6);
+}
+
+/* ⏳ LOADING TEXT */
+.loading {
+  font-style: italic;
+  color: #00f2fe;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* 👻 FADE OUT */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* 🎨 SECRET BOX */
+#secret-box {
+  transition: background-color 0.5s ease;
+}
+
+/* 🔄 SPINNER LOADER */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #00f2fe;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  display: none; /* Hidden by default */
+  margin-top: 20px;
+}
+
+/* ♻️ SPINNER ANIMATION */
+@keyframes spinner-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

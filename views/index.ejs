@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lisper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+  <h1>What's your secret?</h1>
+
+  <div class="card">
+    <p id="secret-text">
+      <%= secret %>
+    </p>
+
+    <div class="spinner" id="spinner"></div>
+
+  </div>
+  <p class="user" id="user-text">
+    <%= user %>
+  </p>
+  
+  <!-- Buton -->
+  <button id="new-secret-btn">Show Another Secret</button>
+  <audio id="pop-sound" src="/sounds/click2.wav"></audio>
+
+
+ <!-- Axios and js linking -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/script.js"></script>
+  
+</body>
+
+</html>
